@@ -37,7 +37,7 @@ Route::get('/blogs','BlogsController@index')->name('blogs');
 
 
 Route::get('/login', function () {
-    return view('login');
+    return view('auth/login');
 })->name('login');
 
 
@@ -47,16 +47,16 @@ Route::get('/login', function () {
 
 
 Route::middleware(['auth'])->group(function () {
-    // Route::get('/approval', 'HomeController@approval')->name('approval');
+    Route::get('/approval', 'HomeController@approval')->name('approval');
 
-    // Route::middleware(['approved'])->group(function () {
-    //     Route::get('/home', 'HomeController@index')->name('home');
-    // });
+    Route::middleware(['approved'])->group(function () {
+        Route::get('/home', 'HomeController@index')->name('home');
+    });
 
-    // Route::middleware(['admin'])->group(function () {
-    //     Route::get('/users', 'UserController@index')->name('admin.users.index');
-    //     Route::get('/users/{user_id}/approve', 'UserController@approve')->name('admin.users.approve');
-    // });
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/users', 'UserController@index')->name('admin.users.index');
+        Route::get('/users/{user_id}/approve', 'UserController@approve')->name('admin.users.approve');
+    });
 });
 
 
