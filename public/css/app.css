@@ -11286,3 +11286,41 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  background-color: rgb(232, 172, 172);
+}
+
+h1, .h1 {
+  font-size: clamp(1rem, 3vw + 1rem, 4rem);
+  position: relative;
+  font-family: "futura-pt", sans-serif;
+}
+
+h1::before, .h1::before,
+h1::after,
+.h1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+h1::before, .h1::before {
+  background-color: rgb(232, 172, 172);
+  -webkit-animation: typewriter 4s steps(24) forwards;
+          animation: typewriter 4s steps(24) forwards;
+}
+
+@-webkit-keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}

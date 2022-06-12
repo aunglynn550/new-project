@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
 class CheckApproved
 {
@@ -23,8 +24,8 @@ class CheckApproved
      * @param  \Closure  $next
      * @return mixed
      */
-    if (!auth()->user()->approved_at) {
-            return redirect()->route('approval');
+    if (! Auth::user()->approved_at) {
+        return redirect()->route('approval');
         }
         return $next($request);
     

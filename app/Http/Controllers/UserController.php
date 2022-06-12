@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     //
-    public function index()
+    public function user()
     {
-        $users = User::whereNull('approved_at')->get();
+         //$users = User::whereNull('approved_at')->get();
+        $user= \Auth::user();
 
-        return view('users', compact('users'));
+         return var_dump($user);
+
+        // return view('user', compact('users'));
+       
     }
 
     public function approve($user_id)

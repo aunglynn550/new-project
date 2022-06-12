@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use  Auth;
 class Authenticate extends Middleware
@@ -15,9 +16,12 @@ class Authenticate extends Middleware
    
     protected function redirectTo($request)
     {
-        if (!Auth::check()) {
-            return redirect('wait');
+        if (! $request->expectsJson()) {
+                  
+           return route('page');
         }
+       return $next($request);
+           
     }
   
 }

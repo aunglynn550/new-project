@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,50 +19,63 @@ Route::get('/', function () {
 });
 
 
-Route::get('/csstest', function () {
-    return view('csstest');
-});
+Route::get('/card', function () {
+    return view('styles/card');
+})->name('card');
 
 
 Route::get('/page', function () {
     return view('page');
+})->name('page');
+
+
+Route::get('/sidebar', function () {
+    return view('dev/sidebar');
 });
 
 
-Route::post('/wait','WaitController@wait')->name('wait');
+Route::get('/typewriter', function () {
+    return view('dev/typewriter');
+});
 
+Route::get('layout', function (){
+    return view('dev/responsivelayout');
+});
 
-Route::get('/blogs','BlogsController@index')->name('blogs');
+Route::get('thebox', function (){
+    return view('dev/thebox');
+});
 
-
-
-
-Route::get('/login', function () {
-    return view('auth/login');
-})->name('login');
-
-
-
-
-
-
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/approval', 'HomeController@approval')->name('approval');
-
-    Route::middleware(['approved'])->group(function () {
-        Route::get('/home', 'HomeController@index')->name('home');
-    });
-
-    Route::middleware(['admin'])->group(function () {
-        Route::get('/users', 'UserController@index')->name('admin.users.index');
-        Route::get('/users/{user_id}/approve', 'UserController@approve')->name('admin.users.approve');
-    });
+Route::get('slopes', function(){
+    return view('dev/slopes');
+});    
+    
+ROute::get('helloyes', function(){
+    return view('dev/helloyes');
 });
 
 
 
 
-// Auth::routes();
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/home', [ App\Http\Controllers\HomeController::class, 'user' ])->name('home');
+ 
+    });
+    
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+    
+    
+    
+  
+
+
+
+
+
+
+
+
+
+Auth::routes();

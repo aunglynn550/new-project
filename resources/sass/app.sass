@@ -1,0 +1,45 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import 'base';
+
+@import 'components';
+
+
+
+
+
+
+
+
+h1{
+    font-size: clamp(1rem,3vw + 1rem, 4rem);
+    position: relative;
+    font-family: "futura-pt", sans-serif;
+}
+h1::before,
+h1::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+h1::before{
+    background-color: var(--clr-neutral-900);
+    animation:
+    typewriter 4s steps(24) forwards;
+}
+@keyframes typewriter{
+    to{
+        left: 100%;
+    }
+}
+

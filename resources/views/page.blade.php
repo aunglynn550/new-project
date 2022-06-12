@@ -4,10 +4,11 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
 <body>
-        <h1>Hello This is only for 18+</h1>
 
-
-        <form action="{{ route('wait') }}" method="post">
+@if( Auth::check())
+   <h2>You are login</h2>
+@endif
+        <form action="{{ route('csstest') }}" method="post">
 
         @csrf
 

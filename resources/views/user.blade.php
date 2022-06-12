@@ -15,7 +15,7 @@
                             </div>
                         @endif
 
-                        <table class="table">
+                        <table class="table user-approve-table">
                             <tr>
                                 <th>User name</th>
                                 <th>Email</th>
