@@ -1,0 +1,172 @@
+:root {
+	--scrollbox-border-size: 10rem;
+	--scrollbox-height: 60vh;
+	--scrollbox-width: 60vw;
+	--box-height: 100px;
+	--box-gap: 5rem;
+
+	--thumb-size: 10vh;
+
+	--scrollbar-width: 0.5rem;
+}
+
+html, body {
+	width: 100vw;
+	height: 100vh;
+	background: #fff;
+}
+
+body {
+	display: grid;
+	place-items: center;
+}
+
+#browser {
+	width: var(--scrollbox-width);
+	height: var(--scrollbox-height);
+	border: var(--scrollbox-border-size) solid lightblue;
+
+	display: grid;
+	grid-template-columns: 1fr var(--scrollbar-width);
+	grid-template-rows: 1fr;
+	grid-template-areas: "content scrollbar";
+
+	position: relative;
+}
+
+main {
+	display: flex;
+	gap: var(--box-gap);
+	flex-direction: row;
+	
+	position: relative;
+	background: #efefef;
+}
+
+main::before, main::after {
+	white-space: nowrap;
+	display: inline-block;
+	position: absolute;
+	right: -1em;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+} 
+
+main::before {
+	content: 'start edge';
+	top: 0;
+	transform: translate3d(calc(1em + var(--scrollbox-border-size) + 100%), calc(-50% - var(--scrollbox-border-size) / 2), 0);
+}
+
+main::after {
+	content: 'end edge';
+	bottom: 0;
+	transform: translate3d(calc(1em + var(--scrollbox-border-size) + 100%), calc(50% + var(--scrollbox-border-size) / 2), 0);
+}
+
+#scrollbar {
+	grid-area: scrollbar;
+	height: 100%;
+	align-self: start;
+
+	background: #ccc;
+}
+
+#scrollbar #thumb {
+	margin-top: 14vh;
+	height: var(--thumb-size);
+	width: 100%;
+	background: #333;
+	border-radius: 9999px;
+}
+
+.box {
+	height: var(--box-height);
+	flex: 1;
+
+	--shaded-size: 2px;
+	--shaded-color: rgba(0 0 0 / 0.12);
+	background: repeating-linear-gradient(
+      -45deg,
+      var(--shaded-color),
+      var(--shaded-color) var(--shaded-size),
+      transparent var(--shaded-size),
+      transparent calc(var(--shaded-size) * 2)
+    );
+	border: 1px solid #333;
+
+	display: grid;
+	place-items: center;
+	text-align: center;
+	
+	position: absolute;
+	left: 0;
+	right: 0;
+	--threshold: 0;
+}
+
+.box p {
+	margin: 0;
+	padding: 0 0.5em; 
+}
+
+.box[data-edge="start"] {
+	top: calc( 100px  * ((var(--threshold))));
+}
+
+.box[data-edge="end"] {
+	bottom: calc((var(--box-height) + var(--scrollbox-border-size)) * ((1 - var(--threshold)) * -1));
+}
+
+#controls {
+	width: var(--scrollbox-width);
+	display: flex;
+	justify-content: space-evenly;
+	text-align: center;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	z-index: 2;
+}
+
+#controls label {
+	cursor: pointer;
+	text-align: right;
+}
+
+#controls input, #controls select {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.box output {
+	font-weight: 700;
+}
+
+pre {
+	padding: 1em;
+	border: 1px solid #ccc;
+}
+
+/* DL GRID @src https://codepen.io/bramus/pen/POEaXg*/
+dl {
+	display: grid;
+	grid-template: auto / 10em 1fr;
+}
+
+dt {
+  grid-column: 1;
+	text-align: right;
+}
+
+dd {
+  grid-column: 2;
+}
+
+dt, dd {
+	margin: 0;
+	padding: .3em .5em;
+}

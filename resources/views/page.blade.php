@@ -8,7 +8,7 @@
 @if( Auth::check())
    <h2>You are login</h2>
 @endif
-        <form action="{{ route('csstest') }}" method="post">
+        <form action="#" method="post">
 
         @csrf
 

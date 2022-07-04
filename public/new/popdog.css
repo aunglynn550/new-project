@@ -1,0 +1,230 @@
+:root{
+    --clr-dark: rgb(13, 17, 19);
+    --clr-light: #fff;
+    --clr-accent: rgb(222, 52, 0);
+    --clr-accent-dark: rgb(163, 38, 163);
+    --clr-secondary: rgb(0, 76, 199);
+
+    --br: .5em;
+
+    --transition : transform 250ms cubic-bezier(.21,1.00,.81,1.00);
+}
+*,*::after,
+*::before{
+    margin: 0;
+}
+body{
+    font-family: sans-serif;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: var(--clr-dark);
+    color: var(--clr-light);
+}
+
+h1,
+h2,
+h3,
+p{
+    margin: 0;
+}
+img{
+    max-width: 100%;
+}
+.btn{
+    cursor: pointer;
+    border: 0;
+    background: var(--clr-secondary);
+    border-radius: 100vw;
+    color: var(--clr-light);
+    font-weight: bold;
+    padding: .5em 1.5em;
+
+}
+
+.game{
+    position: relative;
+    width: 12.5em;
+    cursor: pointer;
+}
+
+.game-stat-right{
+    transform: translateX(120%);
+    transition: transform 1000ms 10ms ease;
+    opacity: 0.1;
+}
+
+.game-stat-left{
+    transform: translateX(-50%);
+    transition: transform 1000ms 10ms ease;
+    opacity: 0.1;
+}
+
+.streamers{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.streamers img{
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    object-fit: cover;
+    
+}
+.rank{
+    position: absolute;   
+    top: 0;
+    right: 1em;
+    font-weight: blod;
+    font-size: 1.125rem;
+    background: rgb(0, 0, 0, .5);
+    padding: .5em .5em .75em;
+    clip-path: polygon(100% 0, 100% 100%, 51% 80%, 0% 100%, 0% 0%);
+    z-index: 100;
+    transition: var(--transition);
+}
+
+.front{
+    transition: 250ms;
+}
+
+.front .thumbnail{
+    border-radius: var(--br);
+}
+
+.front .name{
+    margin: .75em 0;
+}
+
+.front .stats{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.streamers img{
+    outline: 3px solid var(--clr-light);
+}
+
+.streamers img:nth-of-type(1){
+    transform: translateX(50%);
+    z-index: 1;
+}
+
+.streamers img:nth-of-type(2){
+    transform: translateX(25%);
+}
+
+.back{
+    opacity: 0;
+    transition: transform 0ms 0ms ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+}
+.streamer{
+    font-size: .9rem;
+}
+.streaming-info{
+    columns : 2;
+    column-rule: 1px solid rgba(225,225,225,.25);
+}
+.name{
+    font-weight: bold;
+}
+.game-stat{
+    font-size: 1.125rem;
+    text-align: center;
+}
+.game-stat span{
+    font-size: .85rem;
+    display: block;
+}
+
+.background{
+    background: rgb(42, 46, 50);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    transform: scale(.2, .9);
+    transition: 250ms;
+    border-radius: var(--br);
+    opacity: 0;
+}
+
+.game:hover .background{
+    transition: var(--transition),
+     opacity 100ms linear;
+    opacity: 1;
+    transform: scale(1.4, 1);
+}
+
+.game:hover .front
+    {
+    transform: translateY(-30%) scale(.8);
+    }
+.game:hover .name{
+    animation: gameName 250ms forwards;
+}
+
+.game:hover .stats{
+    opacity: 0;
+}
+
+.game:hover .rank{
+        right: -15%;
+        top: 0;
+        }
+.game:hover .back{
+    opacity: 1;
+   transform: translateY(-90%);
+   transition: transform 1000ms cubic-bezier(1,.2,.3,1.14),
+     opacity 1000ms 500ms linear;
+     animation: fadedin 900ms 500ms linear;
+   
+}
+
+
+@keyframes fadedin{
+    0%{
+        opacity: 0;
+    }
+    
+    40%{
+        opacity: .1;
+    }
+
+    80%{
+        opacity: .5;
+    }
+ 
+    100%{
+        opacity: 1;
+
+    }
+}
+
+@keyframes gameName{
+    0%{
+        text-align: left;
+        opacity: 1;
+    }
+    20%{
+        text-align: left;
+        opacity: 0;
+    }
+    50%{
+        text-align: center;
+        opacity: 0;
+    }
+    100%{
+        text-align: center;
+        opacity: 1;
+    }
+}

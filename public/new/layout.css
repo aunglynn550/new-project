@@ -155,3 +155,37 @@ picture
 {
     font-size: 1.75rem;
 }
+
+header{
+    padding: 50px;
+}
+
+
+footer{
+    padding: 200px;
+}
+
+
+
+/* scroll tracker */
+.scroll-tracker{
+    position: fixed;
+    inset: 0 0 auto;
+    height: .5rem;
+    width: 0%;
+    background-color: blue;
+    border-radius: 30px;
+    transform-origin: left;
+}
+
+
+.navbar{
+    position: fixed;
+    inset: 0 0 auto;
+    height: 8px;
+    width: 40%;
+    border-radius: 0 20vw 20vw 0;
+    background-color: blue;
+
+}
+

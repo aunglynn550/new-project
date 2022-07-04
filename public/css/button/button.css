@@ -1,0 +1,13 @@
+.button{
+    display: inline-flex;
+    cursor: pointer;
+    border: 0;
+    padding: 0.5em 1.5em;
+    background-color: blue;
+    color: #fff;
+
+    border-radius: 100vmax;
+
+    /* for demo to make it big */
+    font-size: 3rem;
+}

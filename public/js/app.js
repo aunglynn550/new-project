@@ -1,3 +1,7 @@
+import 'https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js';
+
+
+
 /*
  * ATTENTION: An "eval-source-map" devtool has been used.
  * This devtool is neither made for production nor for readable output files.
@@ -12,3 +16,46 @@
 /******/ 	
 /******/ })()
 ;
+
+
+document.getElementById('parallax').animate(
+    { transform: ['translateY(0)', 'translateY(100px)']},
+    { duration: 10000, // Totally arbitrary!
+      fill: 'both',
+      timeline: new ScrollTimeline({
+          scrollOffsets: [
+              new CSSUnitValue(0, 'px'),
+              new CSSUnitValue(200, 'px')
+          ]
+      })
+    });
+
+
+const scrollTracker = document.querySelector(".scroll-tracker");
+
+
+// var scrollTrackingTimeline = new ScrollTimeline({
+
+//     scource: document.scrollingElement,
+//     orientation :"block",
+//     scrollOffsets: [
+//         new CSSUnitValue(10, '%'),
+//         new CSSUnitValue(98, '%')
+//     ]
+// });
+
+
+
+
+
+// scrollTracker.animate(
+//     {
+//         transform : ['scaleX(0)','scaleX(1)']
+//     },
+//     {
+//         duration : 1,
+//         timeline: scrollTrackingTimeline,
+//     }
+
+// );
+

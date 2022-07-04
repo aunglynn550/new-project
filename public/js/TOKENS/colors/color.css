@@ -1,0 +1,13 @@
+:where(html)
+{
+    --color-purple: #4c1074;
+    --color-white: white;
+
+    --color-primary:var(--color-purple);
+    --color-light:var(--color-white);
+}
+
+:root{
+    --color-surface: var(--color-primary);
+    --color-text:var(--color-light);
+}

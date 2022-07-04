@@ -1,0 +1,63 @@
+
+.button {
+    --background-clr:#efefef;
+    --border-clr: linear-gradient(to bottom right, red, blue);
+    --border-width: .5em;
+    --edge-size: .5em;
+
+    position: relative;
+    isolation: isolate;
+
+    display: inline-grid;
+    padding: .5em 1.5em;
+    border: 0;
+    background-color: var(--background-clr);
+    clip-path: 
+    polygon(
+        /* Top-left 1 */
+        0% var(--edge-size),
+         /* Top-left 2 */
+        var(--edge-size) 0, 
+         /* Top-right  */
+        100% 0%, 
+        /* bottom-right 1 */
+        100% calc(100% - var(--edge-size)), 
+        /* bottom-right 2 */
+        calc(100% - var(--edge-size)) 100%, 
+        /* bottom-left */
+        0% 100%
+        );
+
+}
+
+.button::before,
+.button::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.button::before{
+    background:var(--border-clr);
+    z-index: -2;
+}
+
+.button::after{
+    background: var(--background-clr);
+    z-index: -1;
+    clip-path: 
+    polygon(
+        /* Top-left 1 */
+        .25em var(--edge-size),
+         /* Top-left 2 */
+        var(--edge-size) .25em, 
+         /* Top-right  */
+        calc(100% - .25em) var(--edge-size), 
+        /* bottom-right 1 */
+        calc(100% - .25em) calc(100% - var(--edge-size)), 
+        /* bottom-right 2 */
+        calc(100% - var(--edge-size)) 100%, 
+        /* bottom-left */
+        0% 100%
+        );
+}

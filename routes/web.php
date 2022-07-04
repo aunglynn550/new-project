@@ -54,6 +54,27 @@ ROute::get('helloyes', function(){
     return view('dev/helloyes');
 });
 
+ROute::get('popdog', function(){
+    return view('dev/popdog');
+});
+
+
+ROute::get('ebo', function(){
+    return view('dev/ebo');
+});
+
+ROute::get('borderbox', function(){
+    return view('dev/borderbox');
+});
+
+Route::get('/button', function () {
+    return view('dev/button');
+});
+
+
+Route::get('/image-shadow', function () {
+    return view('dev/image-shadow');
+});
 
 
 
